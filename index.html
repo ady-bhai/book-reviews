@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -80,15 +81,15 @@
         <h1>Ady's Book Reviews</h1>
         <div class="sort-by">
             <label for="sort">Sort by:</label>
-            <select id="sort">
+            <select id="sort" onchange="sortReviews()">
                 <option value="title">Title</option>
                 <option value="author">Author</option>
                 <option value="date-read">Date Read</option>
                 <option value="rating">Rating</option>
             </select>
         </div>
-        <ul class="reviews-list">
-            <li>
+        <ul class="reviews-list" id="reviews-list">
+            <li data-title="Zero to One" data-author="Peter Thiel" data-date-read="2023-04-15" data-rating="10">
                 <div class="title"><a href="https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296">Zero to One</a></div>
                 <div class="author">by Peter Thiel</div>
                 <div class="content">
@@ -97,7 +98,7 @@
                 <div class="date-read">Read on: 2023-04-15</div>
                 <div class="rating">Rating: 10/10</div>
             </li>
-            <li>
+            <li data-title="101 Essays That Change The Way You Think" data-author="Brianna Wiest" data-date-read="2023-03-22" data-rating="11">
                 <div class="title"><a href="https://www.amazon.com/Essays-That-Will-Change-Think/dp/1945796065">101 Essays That Change The Way You Think</a></div>
                 <div class="author">by Brianna Wiest</div>
                 <div class="content">
@@ -106,7 +107,7 @@
                 <div class="date-read">Read on: 2023-03-22</div>
                 <div class="rating">Rating: 11/10</div>
             </li>
-            <li>
+            <li data-title="Fooled by Randomness" data-author="Nicholas Nassim Taleb" data-date-read="2023-05-05" data-rating="8.5">
                 <div class="title"><a href="https://www.amazon.com/Fooled-Randomness-Hidden-Markets-Incerto/dp/0812975219">Fooled by Randomness</a></div>
                 <div class="author">by Nicholas Nassim Taleb</div>
                 <div class="content">
@@ -115,7 +116,7 @@
                 <div class="date-read">Read on: 2023-05-05</div>
                 <div class="rating">Rating: 8.5/10</div>
             </li>
-            <li>
+            <li data-title="Naked Statistics" data-author="Charles Wheelan" data-date-read="2023-02-11" data-rating="9">
                 <div class="title"><a href="https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/039334777X">Naked Statistics</a></div>
                 <div class="author">by Charles Wheelan</div>
                 <div class="content">
@@ -124,7 +125,7 @@
                 <div class="date-read">Read on: 2023-02-11</div>
                 <div class="rating">Rating: 9/10</div>
             </li>
-            <li>
+            <li data-title="21 Problems for the 21st Century" data-author="Yuval Noah Harari" data-date-read="2023-01-20" data-rating="8.5">
                 <div class="title"><a href="https://www.amazon.com/Lessons-21st-Century-Yuval-Harari/dp/0525512179">21 Problems for the 21st Century</a></div>
                 <div class="author">by Yuval Noah Harari</div>
                 <div class="content">
@@ -133,7 +134,7 @@
                 <div class="date-read">Read on: 2023-01-20</div>
                 <div class="rating">Rating: 8.5/10</div>
             </li>
-            <li>
+            <li data-title="The Almanack of Naval Ravikant" data-author="Eric Jorgenson" data-date-read="2023-06-01" data-rating="10">
                 <div class="title"><a href="https://www.navalmanack.com/">The Almanack of Naval Ravikant</a></div>
                 <div class="author">by Eric Jorgenson</div>
                 <div class="content">
@@ -144,5 +145,19 @@
             </li>
         </ul>
     </div>
-</body>
-</html>
+    <script>
+        function sortReviews() {
+            const sortBy = document.getElementById('sort').value;
+            const reviewsList = document.getElementById('reviews-list');
+            const reviews = Array.from(reviewsList.getElementsByTagName('li'));
+
+            reviews.sort((a, b) => {
+                const aValue = a.getAttribute(`data-${sortBy}`);
+                const bValue = b.getAttribute(`data-${sortBy}`);
+
+                if (sortBy === 'title' || sortBy === 'author') {
+                    return aValue.localeCompare(bValue);
+                } else if (sortBy === 'date-read') {
+                    return new Date(aValue) - new Date(bValue);
+                } else if (sortBy === 'rating') {
+                    return parseFloat(bValue) - parse
