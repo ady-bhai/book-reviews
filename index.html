@@ -124,7 +124,7 @@
     </style>
     <script>
         (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace with your user ID from EmailJS
+            emailjs.init("EWOJAD7KgoU5JRrLO"); // Replace with your user ID from EmailJS
         })();
 
         function submitRecommendation() {
@@ -135,7 +135,7 @@
                     book_recommendation: recommendation
                 };
 
-                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                emailjs.send('ady_mehta_email', 'template_nb09ih5', templateParams)
                     .then(function(response) {
                         console.log('SUCCESS!', response.status, response.text);
                         document.getElementById('recommendation-form').style.display = 'none';
