@@ -6,33 +6,44 @@
     <title>Ady's Book Reviews</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Helvetica', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: #333333;
+        }
+        header, footer {
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
         h1 {
             text-align: center;
-            font-size: 3em;
-            margin-top: 20px;
+            font-size: 2.5em;
+            margin-bottom: 20px;
             color: #333333;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         .sort-by {
             margin-bottom: 20px;
+            text-align: center;
         }
         .sort-by label {
             display: block;
             margin-bottom: 10px;
         }
         .sort-by select {
-            width: 100%;
+            width: 50%;
             padding: 10px;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
@@ -58,6 +69,10 @@
             color: #333333;
             margin-bottom: 10px;
         }
+        .title a {
+            text-decoration: none;
+            color: #007bff;
+        }
         .author {
             font-size: 1.2em;
             color: #777777;
@@ -68,15 +83,24 @@
             line-height: 1.6;
             color: #555555;
         }
-        .date-read {
+        .date-read, .rating {
             margin-top: 10px;
         }
-        .rating {
-            margin-top: 10px;
+        footer {
+            border-top: 1px solid #eaeaea;
+            padding: 1em 0;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
     <div class="container">
         <h1>Ady's Book Reviews</h1>
         <div class="sort-by">
@@ -145,19 +169,16 @@
             </li>
         </ul>
     </div>
+    <footer>
+        <p>&copy; 2024 Ria Deshpande</p>
+    </footer>
     <script>
         function sortReviews() {
-            const sortBy = document.getElementById('sort').value;
-            const reviewsList = document.getElementById('reviews-list');
-            const reviews = Array.from(reviewsList.getElementsByTagName('li'));
+            const sortBy = document.getElementBy
 
-            reviews.sort((a, b) => {
-                const aValue = a.getAttribute(`data-${sortBy}`);
-                const bValue = b.getAttribute(`data-${sortBy}`);
 
-                if (sortBy === 'title' || sortBy === 'author') {
-                    return aValue.localeCompare(bValue);
-                } else if (sortBy === 'date-read') {
-                    return new Date(aValue) - new Date(bValue);
-                } else if (sortBy === 'rating') {
-                    return parseFloat(bValue) - parse
+
+
+
+
+
