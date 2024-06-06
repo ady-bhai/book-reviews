@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ady's Book Reviews</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
         body {
             font-family: 'Helvetica', 'Arial', sans-serif;
@@ -121,6 +122,32 @@
             text-align: center;
         }
     </style>
+    <script>
+        (function(){
+            emailjs.init("ady_mehta_email"); // Replace with your user ID from EmailJS
+        })();
+
+        function submitRecommendation() {
+            var recommendation = document.getElementById('book-recommendation').value;
+            if (recommendation) {
+                var templateParams = {
+                    to_email: 'ady.s.miti@gmail.com',
+                    book_recommendation: recommendation
+                };
+
+                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        document.getElementById('recommendation-form').style.display = 'none';
+                        document.getElementById('main-content').style.display = 'block';
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            } else {
+                alert("Please enter a book recommendation.");
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -173,17 +200,4 @@
                 <div class="content">
                     A quasi madman finance bro shares his knowledge of probability while recounting his experience on the Street. My takeaways are two-fold: 1) small risk, small rewards are not bad at all. 2) if elements of randomness can always bog you down, hard work is the one honest mappable input given you treat success like a function. 8.5/10 
                 </div>
-                <div class="date-read">Read on: 2023-05-05</div>
-                <div class="rating">Rating: 8.5/10</div>
-            </li>
-            <li data-title="Naked Statistics" data-author="Charles Wheelan" data-date-read="2023-02-11" data-rating="9">
-                <div class="title"><a href="https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/039334777X">Naked Statistics</a></div>
-                <div class="author">by Charles Wheelan</div>
-                <div class="content">
-                    A goofy book about how abundant statistics is in the world around us. Very applicable examples across a wide range of domains, creatively filled with light humor. Enjoyable read. 9/10
-                </div>
-                <div class="date-read">Read on: 2023-02-11</div>
-                <div class="rating">Rating: 9/10</div>
-            </li>
-            <li data-title="21 Problems for the 21st Century" data-author="Yuval Noah Harari" data-date-read="2023-01-20" data-rating="8.5">
-                <div class="title"><a href
+                <div class="date-read">Read on: 202
